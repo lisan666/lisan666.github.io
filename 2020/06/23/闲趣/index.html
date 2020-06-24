@@ -50,16 +50,16 @@
         <header>
     <nav class="navbar">
         <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="navbar-header header-logo"><a href="/">李三的博客</a></div>
             <div class="menu navbar-right">
                 
-                    <a class="menu-item" href="/archives">Posts</a>
+                    <a class="menu-item" href="/archives">列表</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/category">分类</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tag">标签</a>
                 
-                    <a class="menu-item" href="/about">About</a>
+                    <a class="menu-item" href="/about">关于</a>
                 
                 <input id="switch_default" type="checkbox" class="switch_default">
                 <label for="switch_default" class="toggleBtn"></label>
@@ -72,19 +72,19 @@
         <div class="container">
             <div class="navbar-header">
                 <div>
-                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                    <a href="/">李三的博客</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
                 </div>
                 <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
             </div>
             <div class="menu" id="mobile-menu">
                 
-                    <a class="menu-item" href="/archives">Posts</a>
+                    <a class="menu-item" href="/archives">列表</a>
                 
-                    <a class="menu-item" href="/category">Categories</a>
+                    <a class="menu-item" href="/category">分类</a>
                 
-                    <a class="menu-item" href="/tag">Tags</a>
+                    <a class="menu-item" href="/tag">标签</a>
                 
-                    <a class="menu-item" href="/about">About</a>
+                    <a class="menu-item" href="/about">关于</a>
                 
             </div>
         </div>
@@ -136,8 +136,32 @@
 <p>让这个网址有些存在的意义吧。</p>
 
         </div>
-
         
+            <section id="comments" class="comments">
+                <style>
+                    .comments{margin:30px;padding:10px;background:#fff}
+                    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+                </style>
+                <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '.valine_comment',
+        app_id: 'AxlNr1LRE9NG2tQKPY6tKBOA-gzGzoHsz',
+        app_key: '88NGT5ML637QM4brvhQYPqWE',
+        placeholder: '这里留言。。',
+        notify: 'true',
+        verify: 'true',
+    });
+</script>
+
+            </section>
+        
+       <!-- 
             <section class="post-copyright">
                 
                     <p class="copyright-item">
@@ -165,7 +189,7 @@
                 
 
             </section>
-        
+        -->
         <section class="post-tags">
             <div>
                 <span>Tag(s):</span>
@@ -183,35 +207,12 @@
                 <a href="/">home</a>
             </div>
         </section>
+
         <section class="post-nav">
             
             
         </section>
-        
-            <section id="comments" class="comments">
-                <style>
-                    .comments{margin:30px;padding:10px;background:#fff}
-                    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
-                </style>
-                <div class="valine_comment"></div>
-<!--载入js，在</body>之前插入即可-->
-<!--Leancloud 操作库:-->
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<!--Valine 的核心代码库-->
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '.valine_comment',
-        app_id: 'AxlNr1LRE9NG2tQKPY6tKBOA-gzGzoHsz',
-        app_key: '88NGT5ML637QM4brvhQYPqWE',
-        placeholder: '这里留言。。',
-        notify: 'true',
-        verify: 'true',
-    });
-</script>
 
-            </section>
-        
 
     </article>
 </div>
