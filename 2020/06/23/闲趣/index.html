@@ -1,386 +1,228 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<!--Description-->
-
-
-
-    <meta name="description" content="闲来无事，刚好看到一篇文章，可以搭建一个属于自己的博客，所以就拿来试试。效果还不错。以后没事就慢慢搭建一下这个在github上的博客吧。每天写写生活中的趣事。写写工作中学习到的技术。也写写希望以后能回忆到的美好回忆。也许就我一个人看吧。
-从前也在qq空间写过很多文章，现在去看也感叹当时的文采，但很久"/>
-
-
-<!--Author-->
-
-    <meta name="author" content="LiSan"/>
-
-
-<!--Open Graph Title-->
-
-    <meta property="og:title" content="闲趣"/>
-
-
-<!--Open Graph Description-->
-
-    <meta property="og:description" content="闲来无事，刚好看到一篇文章，可以搭建一个属于自己的博客，所以就拿来试试。效果还不错。以后没事就慢慢搭建一下这个在github上的博客吧。每天写写生活中的趣事。写写工作中学习到的技术。也写写希望以后能回忆到的美好回忆。也许就我一个人看吧。
-从前也在qq空间写过很多文章，现在去看也感叹当时的文采，但很久"/>
-
-
-<!--Open Graph Site Name-->
-    <meta property="og:site_name" content="李三的博客"/>
-
-<!--Type page-->
-
-    <meta property="og:type" content="article"/>
-
-
-<!--Page Cover-->
-
-
-    <meta property="og:image" content="http://yoursite.com/img/home-bg.jpg"/>
-
-
-<meta name="twitter:card" content="summary_large_image"/>
+    <meta name="author" content="LiSan">
 
 
 
 
-    <meta name="twitter:image" content="http://yoursite.com/img/home-bg.jpg"/>
 
-
-<!-- Title -->
-
-<title>闲趣 - 李三的博客</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-
-<!-- Custom CSS -->
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-<!-- Gallery -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/featherlight@1.4.0/src/featherlight.css" integrity="sha256-30DV/STftlyQ6v8yaOWlabammvCYtRJERLj/m0b3zno=" crossorigin="anonymous">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/css/lightgallery.min.css">
-
-<!-- favicon -->
-
-<link rel="icon" href="/img/favicon.png"/>
+<title>闲趣 | 李三的博客</title>
 
 
 
-    <!-- Google Analytics -->
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
     
 
 
 <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="李三的博客" type="application/atom+xml">
 </head>
-<!-- Head tag -->
-
 <body>
-
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top bg-transparent position-absolute w-100 p-0" id="nav">
-    <div class="container pl-0 pr-0">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <a class="navbar-brand text-white p-1 pl-3" href="/">李三的博客</a>
-        </div>
-        <div class="navbar-nav float-right">
-            <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-    <!-- /.container -->
-</nav>
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 text-center">
-                <div class="post-heading text-white">
-                    <h1>闲趣</h1>
-                    
-                </div>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
             </div>
         </div>
-    </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
 </header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Main Content -->
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                
-                    <span class="meta d-inline-block">
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
     
-    
-    <!-- Date -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-calendar-check fa-fw"></i>
-        2020-06-23
-    
-    <!-- word count and read count -->
     
 
     
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">闲趣</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">LiSan</a>
+                    
 
-    
-</span>
-                
-                <p>闲来无事，刚好看到一篇文章，可以搭建一个属于自己的博客，所以就拿来试试。<br>效果还不错。<br>以后没事就慢慢搭建一下这个在github上的博客吧。<br>每天写写生活中的趣事。<br>写写工作中学习到的技术。<br>也写写希望以后能回忆到的美好回忆。<br>也许就我一个人看吧。</p>
+                    
+                        <span class="post-time">
+                        Date: <a href="#">六月 23, 2020&nbsp;&nbsp;16:29:50</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>闲来无事，刚好看到一篇文章，可以搭建一个属于自己的博客，所以就拿来试试。<br>效果还不错。<br>以后没事就慢慢搭建一下这个在github上的博客吧。<br>每天写写生活中的趣事。<br>写写工作中学习到的技术。<br>也写写希望以后能回忆到的美好回忆。<br>也许就我一个人看吧。</p>
 <p>从前也在qq空间写过很多文章，现在去看也感叹当时的文采，但很久没写，对文字已经有些陌生了。</p>
 <p>从现在开始，一边搭建这个博客，一边写一些有用的文章。</p>
 <p>让这个网址有些存在的意义吧。</p>
 
-            </div>
+        </div>
 
-            <!-- Post information -->
-            
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 post-tags">
         
-            <i class="fas fa-tag" style="vertical-align: middle;font-size: .8rem;"></i>
-            tags:&nbsp;
-            
-            
-        
-            <a href="/tags/开始/">#开始</a>
-        
-    </div>
-
-            
-
-
-
-
-            
-                <!-- Comments -->
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>LiSan</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/06/23/%E9%97%B2%E8%B6%A3/">http://yoursite.com/2020/06/23/%E9%97%B2%E8%B6%A3/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
                 
 
-                
-
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%BC%80%E5%A7%8B/"># 开始</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
             
-
-        </div>
-    </div>
-</article>
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-    <style>
-        #toc-content .toc-link::before {
-            background-color: transparent;
-            max-height: 25px;
-        }
-
-        #toc-content .toc-link.is-active-link::before {
-            background-color: #404040;
-        }
-    </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-    <div class="ui-toc dropup scrollspy-body pull-right" style="right: 3%;">
-        <button type="button" class="toc-btn btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-            <i class="fas fa-list"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right p-2"  aria-labelledby="tocLabel">
-            <div class="toc-widget">
-                <div id="toc-content" class="text-truncate">
-                </div>
-            </div>
-            <div class="toc-menu pt-3 pl-4">
-                <a class="expand-toggle d-block py-1" href="#"><span class="expand-text">全部展开</span><span class="close-text" style="display: none;">全部收起</span></a>
-                <a class="back-to-top d-block py-1" href="#">回到顶部</a>
-                <a class="go-to-bottom d-block py-1" href="#">移至底部</a>
-            </div>
-        </div>
-    </div>
-    <script>
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '#toc-content',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: 'article',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
-        });
-    </script>
-
-
-    
-
-
-    <!-- Footer -->
-    <hr />
-
-<!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 text-center">
-                <ul class="list-inline">
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                </ul>
-                <ul class="copyright footer-menu list-inline">
-                    
-                    
-                        <li class="list-inline-item">
-                            
-                            
-                            <a href="/">
-                                
-                                    Home
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="/archives">
-                                
-                                    Archives
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="/tags">
-                                
-                                    Tags
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="/categories">
-                                
-                                    Categories
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="/about">
-                                
-                                    About
-                                
-                            </a>
-                        </li>
-                    
-                </ul>
-                <p class="copyright footer-author">
-                    &copy; -2020 
-                    <a rel="external" class="copyright-link" href="" target="_blank">LiSan</a><br/>
-                    Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
-                    <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
-                    Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
-                    
-                    
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-    <!-- After footer scripts -->
-    <!-- jQuery -->
-<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
-
-<!-- For drop down -->
-<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-<!-- Gallery -->
-<script src="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery-all.min.js"></script>
-<!-- Busuanzi -->
-
-
-<!-- Search script -->
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-    $(function () {
-        searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+            
+        </section>
+        
+            <section id="comments" class="comments">
+                <style>
+                    .comments{margin:30px;padding:10px;background:#fff}
+                    @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+                </style>
+                <div class="valine_comment"></div>
+<!--载入js，在</body>之前插入即可-->
+<!--Leancloud 操作库:-->
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<!--Valine 的核心代码库-->
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '.valine_comment',
+        app_id: 'AxlNr1LRE9NG2tQKPY6tKBOA-gzGzoHsz',
+        app_key: '88NGT5ML637QM4brvhQYPqWE',
+        placeholder: '这里留言。。',
+        notify: 'true',
+        verify: 'true',
     });
 </script>
 
+            </section>
+        
 
-<script src="/js/main.js"></script>
-
-
-    <!-- Search Modal -->
-    <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content overflow-auto">
-            <div class="modal-header">
-                <input type="text" class="form-control" placeholder="搜索关键词..." id="searchInput">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div id="searchResult">
-                    <div class="search-empty text-center text-muted p-5">
-                        <i class="far fa-meh"></i>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div>
+    </article>
 </div>
 
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© LiSan | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
 
+    </div>
 </body>
 </html>
