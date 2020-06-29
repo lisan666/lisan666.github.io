@@ -158,17 +158,17 @@ html::-webkit-scrollbar {
 }
 html::-webkit-scrollbar-thumb {
   height: 40px;
-  background-color: #eee;
+  background-color: rgb(143, 68, 68);
   border-radius: 16px;
 }
 html::-webkit-scrollbar-thumb:hover {
-  background-color: #ddd;
+  background-color: rgb(128, 45, 45);
 }
 body {
   font-size: 11pt;
   font-weight: normal;
   line-height: 2em;
-  background-color: #fff;
+  background-color: rgb(161, 40, 40);
   color: #161209;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
