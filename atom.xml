@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-24T02:32:12.277Z</updated>
+  <updated>2020-06-30T07:17:33.659Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为何要统一异常处理？</title>
+    <link href="http://yoursite.com/2020/06/30/%E4%B8%BA%E4%BD%95%E8%A6%81%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%9F/"/>
+    <id>http://yoursite.com/2020/06/30/%E4%B8%BA%E4%BD%95%E8%A6%81%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%EF%BC%9F/</id>
+    <published>2020-06-30T07:16:28.575Z</published>
+    <updated>2020-06-30T07:17:33.659Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>如果没异常处理的话，后端报错，前端接收不到，就会一直报500超时错误，所以为了体验良好，还是要写统一异常处理。</strong></p><ul><li>写一个异常处理类实现methodInteceptor接口的invoke方法即可。</li><li>在invoke方法中用try catch包裹执行invocation.proceed();，方法执行正常就直接返回，执行异常在catch中包装异常即可。</li><li>当然也可以在处理异常的过程中校验进行入参等操作。</li><li>这个inteceptor拦截器的作用范围最好写在controller层，因为在service层可能会影响spring框架执行回滚（应该是有可能在spring回滚前就将异常返回了，所以没执行回滚）。</li></ul><p>配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id&#x3D;&quot;traceInterceptor&quot; class&#x3D;&quot;com.suning.zytcl.core.interceptor.TraceInterceptor&quot;&#x2F;&gt;</span><br><span class="line">&lt;aop:config&gt;</span><br><span class="line">   &lt;aop:pointcut id&#x3D;&quot;coreLogger&quot;</span><br><span class="line">              expression&#x3D;&quot;@within(org.springframework.stereotype.Controller)</span><br><span class="line">               or @within(org.springframework.web.bind.annotation.RestController)&quot; &#x2F;&gt;</span><br><span class="line">   &lt;aop:advisor advice-ref&#x3D;&quot;traceInterceptor&quot; pointcut-ref&#x3D;&quot;coreLogger&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;aop:config&gt;</span><br></pre></td></tr></table></figure><p>异常处理类 TraceInterceptor:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class TraceInterceptor implements MethodInterceptor &#123;</span><br><span class="line">    private static final Logger logger &#x3D; LoggerFactory.getLogger(TraceInterceptor.class);</span><br><span class="line">    private static final Class&lt;?&gt;[] EXCLUDE_CLAZZ &#x3D; new Class[]&#123;String.class, Integer.class&#125;;</span><br><span class="line">    private static final String MIDDLE_LINE &#x3D; &quot;-&quot;;</span><br><span class="line">    private static final String BLANK &#x3D; &quot;&quot;;</span><br><span class="line">    private static final long THRESHOLD &#x3D; 1000L;</span><br><span class="line"></span><br><span class="line">    public TraceInterceptor() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object invoke(MethodInvocation invocation) throws Throwable &#123;</span><br><span class="line">        Object[] arguments &#x3D; invocation.getArguments();</span><br><span class="line">        Class&lt;?&gt; clazz &#x3D; invocation.getThis().getClass();</span><br><span class="line">        Method method &#x3D; invocation.getMethod();</span><br><span class="line">        Trace classTrace &#x3D; (Trace)clazz.getAnnotation(Trace.class);</span><br><span class="line">        Trace methodTrace &#x3D; (Trace)method.getAnnotation(Trace.class);</span><br><span class="line">        boolean logExpand &#x3D; this.isLogExpand(classTrace, methodTrace);</span><br><span class="line">        if (logExpand) &#123;</span><br><span class="line">            MDC.put(&quot;invokeNo&quot;, UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        logger.debug(&quot;|&#123;&#125;|&#123;&#125;|&#123;&#125;|&quot;, new Object[]&#123;clazz.getName(), method.getName(), this.getArgumentsString(arguments)&#125;);</span><br><span class="line">        Object result &#x3D; null;</span><br><span class="line">        long startTime &#x3D; System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            this.verifyParameters(method, arguments);</span><br><span class="line">            result &#x3D; invocation.proceed();</span><br><span class="line">        &#125; catch (Exception var15) &#123;</span><br><span class="line">            logger.error(&quot;调用方法异常&quot;, var15);</span><br><span class="line">            result &#x3D; this.getResult(method, var15);</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            logger.debug(&quot;|&#123;&#125;|&#123;&#125;|&#123;&#125;|invoke.time:&#123;&#125;|&quot;, new Object[]&#123;clazz.getName(), method.getName(), this.getReturnString(result), this.getInvokeTime(System.currentTimeMillis() - startTime)&#125;);</span><br><span class="line">            if (logExpand) &#123;</span><br><span class="line">                MDC.remove(&quot;invokeNo&quot;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;如果没异常处理的话，后端报错，前端接收不到，就会一直报500超时错误，所以为了体验良好，还是要写统一异常处理。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;写一个异常处理类实现methodInteceptor接口的invoke方法即可。&lt;/li&gt;
+&lt;li&gt;在
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>闲趣</title>
